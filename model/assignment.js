@@ -1,3 +1,4 @@
+const { Double } = require('bson');
 let mongoose = require('mongoose');
 var aggregatePaginate = require("mongoose-aggregate-paginate-v2");
 
@@ -7,7 +8,11 @@ let AssignmentSchema = Schema({
     id: Number,
     dateDeRendu: Date,
     nom: String,
-    rendu: Boolean
+    rendu: Boolean,
+    auteur: String,
+    matiereId: Number,
+    note: Double,
+    remarque: String
 });
 
 AssignmentSchema.plugin(aggregatePaginate);
