@@ -36,7 +36,7 @@ mongoose.connect(uri, options)
 // Pour accepter les connexions cross-domain (CORS)
 app.use((req, res, next) =>  {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,X-Access-Token");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
@@ -60,8 +60,8 @@ app.route(prefix + '/user').post(user.login).get(user.me);
 
 app.route(prefix + '/assignments')
   .get(assignment.getAssignments)
-  .post(assignment.postAssignment)
-  .put(assignment.updateAssignment);
+  .post(VerifyToken,assignment.postAssignment)
+  .put(VerifyToken,assignment.updateAssignment);
 
 app.route(prefix + '/matieres')
   .get(matiere.getMatieres);

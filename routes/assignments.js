@@ -47,7 +47,7 @@ function getAssignment(req, res) {
 }
 
 // Ajout d'un assignment (POST)
-function postAssignment(req, res) {
+function postAssignment(req, res,next) {
   let assignment = new Assignment();
   assignment.id = req.body.id;
   assignment.nom = req.body.nom;
@@ -71,7 +71,7 @@ function postAssignment(req, res) {
 }
 
 // Update d'un assignment (PUT)
-function updateAssignment(req, res) {
+function updateAssignment(req, res,next) {
   console.log("UPDATE recu assignment : ");
   console.log(req.body);
   Assignment.findByIdAndUpdate(
