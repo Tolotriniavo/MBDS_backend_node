@@ -3,7 +3,7 @@ let app = express();
 let bodyParser = require('body-parser');
 
 
-var VerifyToken = require('./verifyToken');
+var VerifyToken = require('./routes/verifyToken');
 let user = require('./routes/users');
 
 let assignment = require('./routes/assignments');
