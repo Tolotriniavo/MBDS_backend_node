@@ -2,6 +2,10 @@ let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
 
+
+var VerifyToken = require('./verifyToken');
+let user = require('./routes/users');
+
 let assignment = require('./routes/assignments');
 let matiere = require('./routes/matieres');
 
@@ -46,6 +50,14 @@ let port = process.env.PORT || 8010;
 // les routes
 const prefix = '/api';
 
+app.route(prefix + '/users').post(user.register).get(user.logout);
+                           
+
+app.route(prefix + '/user').post(user.login).get(user.me);
+
+
+
+
 app.route(prefix + '/assignments')
   .get(assignment.getAssignments)
   .post(assignment.postAssignment)
@@ -60,7 +72,7 @@ app.route(prefix + '/assignments/:id')
   .delete(assignment.deleteAssignment);
 
 app.route(prefix + '/matieres/:id')
-  .get(matiere.getMatiere);
+  .get(VerifyToken,matiere.getMatiere);
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
