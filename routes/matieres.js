@@ -10,7 +10,7 @@ function getMatieres(req,res) {
     });
 }
 
-function getMatiere(req, res, next) {
+function getMatiere(req, res) {
     let matiereId = req.params.id;
   
     Matiere.findOne({ _id: matiereId }, (err, matiere) => {
