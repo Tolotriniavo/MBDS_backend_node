@@ -60,7 +60,7 @@ app.route(prefix + '/user').post(user.login).get(user.me);
 
 app.route(prefix + '/assignments')
   .get(assignment.getAssignments)
-  .post(VerifyToken,assignment.postAssignment)
+  .post(assignment.postAssignment)
   .put(VerifyToken,assignment.updateAssignment);
 
 app.route(prefix + '/matieres')
