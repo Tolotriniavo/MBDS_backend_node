@@ -72,7 +72,7 @@ app.route(prefix + '/assignments/:id')
   .delete(assignment.deleteAssignment);
 
 app.route(prefix + '/matieres/:id')
-  .get(VerifyToken,matiere.getMatiere);
+  .get(matiere.getMatiere);
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
