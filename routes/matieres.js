@@ -13,7 +13,7 @@ function getMatieres(req,res) {
 function getMatiere(req, res, next) {
     let matiereId = req.params.id;
   
-    Matiere.findOne({ id: matiereId }, (err, matiere) => {
+    Matiere.findOne({ _id: matiereId }, (err, matiere) => {
       if (err) {
         res.send(err);
       }
